@@ -7,6 +7,8 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="#34495e"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
     tools:context="com.example.tahmi.androidsmartui.MainActivity">
 
     <TextView
@@ -69,17 +71,27 @@
                     android:id="@+id/textView4"
                     android:layout_marginTop="10dp" />
 
-                <RadioButton
-                    android:text="Vat Inclusive"
+                <RadioGroup
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/radioButton" />
+                    android:orientation="horizontal">
 
-                <RadioButton
-                    android:text="Vat Exclusive"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/radioButton2" />
+                    <RadioButton
+                        android:text="Vat Inclusive"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/radioButton_vat_inclusive"
+                        android:layout_weight="1"
+                        android:onClick="onRadioButtonClicked"/>
+
+                    <RadioButton
+                        android:text="Vat Exclusive"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/radioButton_vat_exclusive"
+                        android:layout_weight="1"
+                        android:onClick="onRadioButtonClicked"/>
+                </RadioGroup>
 
                 <TextView
                     android:text="Price:"
@@ -96,7 +108,7 @@
                     android:ems="10"
                     android:hint="13000"
                     android:background="@drawable/exittext_theme_custom"
-                    android:id="@+id/editText" />
+                    android:id="@+id/editText_price" />
 
                 <TextView
                     android:text="Vat Rate:"

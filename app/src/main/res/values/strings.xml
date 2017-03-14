@@ -1,22 +1,28 @@
 <resources>
     <string name="app_name">VAT CALCULATOR</string>
     <string-array name="financial_year">
-        <item></item>
-        <item>2016-2017</item>
         <item>2015-2016</item>
         <item>2014-2015</item>
         <item>2013-2014</item>
         <item>2012-2013</item>
     </string-array>
     <string-array name="vat_rate">
-        <item></item>
         <item>Standard</item>
         <item>Truncated</item>
     </string-array>
     <string-array name="services_list">
-        <item></item>
-        <item>IT Enabled Services - ITES(@4.5%)</item>
-        <item>Motor Car Garage and Workshop(@7.5%)</item>
-        <item>Dockyard(@7.5%)</item>
+        <item>IT Enabled Services - ITES(4.5%)</item>
+        <item>Motor Car Garage and Workshop(7.5%)</item>
+        <item>Construction Firm(7.5%)</item>
+        <item>Land Development Firm(3%)</item>
+        <item>Furniture Manufacturing(@7.5%)</item>
+        <item>Furniture(Trading having VAT chalan)(4%)</item>
+        <item>Procurement Provider(4%)</item>
+        <item>Transport Contractor - Petroleum(2.25%)</item>
+        <item>Purchaser of Auctioned Good(4%)</item>
+        <item>Sponsorship Service(7.5%)</item>
+        <item>Building Construction Firm(1-1100 sq.ft.)(1.5%)</item>
+        <item>Building Construction Firm(1101-1600 sq.ft.)(2.5%)</item>
+        <item>Building Construction Firm(1601sq.ft. and above)(4.5%)</item>
     </string-array>
 </resources>
