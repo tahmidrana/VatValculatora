@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">VAT CALCULATOR</string>
+    <string-array name="financial_year">
+        <item></item>
+        <item>2016-2017</item>
+        <item>2015-2016</item>
+        <item>2014-2015</item>
+        <item>2013-2014</item>
+        <item>2012-2013</item>
+    </string-array>
+    <string-array name="vat_rate">
+        <item></item>
+        <item>Standard</item>
+        <item>Truncated</item>
+    </string-array>
+    <string-array name="services_list">
+        <item></item>
+        <item>IT Enabled Services - ITES(@4.5%)</item>
+        <item>Motor Car Garage and Workshop(@7.5%)</item>
+        <item>Dockyard(@7.5%)</item>
+    </string-array>
+</resources>
