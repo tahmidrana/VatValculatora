@@ -1,6 +1,9 @@
 package com.example.tahmi.androidsmartui;
 
 import android.content.DialogInterface;
+import android.icu.text.DecimalFormat;
+import android.os.Build;
+import android.support.annotation.RequiresApi;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -37,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        vat_inclusive = false;
         main_function();
     }
 
@@ -127,6 +130,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
     public void vat_calculator(){
         editText_price = (EditText) findViewById(R.id.editText_price);
         price = Double.parseDouble(editText_price.getText().toString());
@@ -146,22 +150,22 @@ public class MainActivity extends AppCompatActivity {
                     vat_rate_val = 7.5;
                     break;
                 case 3:
-                    vat_rate_val = 3;
+                    vat_rate_val = 3.0;
                     break;
                 case 4:
                     vat_rate_val = 7.5;
                     break;
                 case 5:
-                    vat_rate_val = 4;
+                    vat_rate_val = 4.0;
                     break;
                 case 6:
-                    vat_rate_val = 4;
+                    vat_rate_val = 4.0;
                     break;
                 case 7:
                     vat_rate_val = 2.25;
                     break;
                 case 8:
-                    vat_rate_val = 4;
+                    vat_rate_val = 4.0;
                     break;
                 case 9:
                     vat_rate_val = 7.5;
@@ -180,6 +184,14 @@ public class MainActivity extends AppCompatActivity {
 
         result_price = (price*vat_rate_val) / 100.0;
         result_price += price;
-        Toast.makeText(getApplicationContext(), "Vat: " + vat_rate_val + "\nPrice: " + result_price+price, Toast.LENGTH_LONG).show();
+
+        if(vat_inclusive){
+            vat_rate_val = price*(vat_rate_val/result_price);
+            result_price = price - vat_rate_val;
+        }
+        DecimalFormat df = new DecimalFormat(".##");
+        String final_result = df.format(result_price);
+        String final_vat = df.format(vat_rate_val);
+        Toast.makeText(getApplicationContext(), "Vat: " + final_vat + "\nPrice: " + final_result, Toast.LENGTH_LONG).show();
     }
 }

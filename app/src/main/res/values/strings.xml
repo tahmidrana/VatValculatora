@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">VAT CALCULATOR</string>
+    <string name="app_name">Vat Calculator</string>
     <string-array name="financial_year">
         <item>2015-2016</item>
         <item>2014-2015</item>

@@ -90,7 +90,8 @@
                         android:layout_height="wrap_content"
                         android:id="@+id/radioButton_vat_exclusive"
                         android:layout_weight="1"
-                        android:onClick="onRadioButtonClicked"/>
+                        android:onClick="onRadioButtonClicked"
+                        android:checked="true" />
                 </RadioGroup>
 
                 <TextView
