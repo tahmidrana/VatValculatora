@@ -33,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
     private int vat_rate_pos;
     private boolean vat_inclusive;
     private double vat_rate_val;
+    private double vat;
     private double price;
     private double result_price;
 
@@ -130,68 +131,69 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.N)
     public void vat_calculator(){
         editText_price = (EditText) findViewById(R.id.editText_price);
-        price = Double.parseDouble(editText_price.getText().toString());
-        /*Toast.makeText(getApplicationContext(), "Financial Year: " + financial_year_pos + "\nVat rate: "+ vat_rate_pos + "\nServices List: " + services_list_pos +
-                "\nPrice: " + editText_price.getText().toString() + "\nVat: " + vat_inclusive, Toast.LENGTH_LONG).show();*/
-        if(vat_rate_pos == 0){
-            vat_rate_val = 15.0;
-        } else if(vat_rate_pos == 1){
-            switch(services_list_pos){
-                case 0:
-                    vat_rate_val = 4.5;
-                    break;
-                case 1:
-                    vat_rate_val = 7.5;
-                    break;
-                case 2:
-                    vat_rate_val = 7.5;
-                    break;
-                case 3:
-                    vat_rate_val = 3.0;
-                    break;
-                case 4:
-                    vat_rate_val = 7.5;
-                    break;
-                case 5:
-                    vat_rate_val = 4.0;
-                    break;
-                case 6:
-                    vat_rate_val = 4.0;
-                    break;
-                case 7:
-                    vat_rate_val = 2.25;
-                    break;
-                case 8:
-                    vat_rate_val = 4.0;
-                    break;
-                case 9:
-                    vat_rate_val = 7.5;
-                    break;
-                case 10:
-                    vat_rate_val = 1.5;
-                    break;
-                case 11:
-                    vat_rate_val = 2.5;
-                    break;
-                case 12:
-                    vat_rate_val = 4.5;
-                    break;
+        try {
+            price = Double.parseDouble(editText_price.getText().toString());
+            if (vat_rate_pos == 0) {
+                vat_rate_val = 15.0;
+            } else if (vat_rate_pos == 1) {
+                switch (services_list_pos) {
+                    case 0:
+                        vat_rate_val = 4.5;
+                        break;
+                    case 1:
+                        vat_rate_val = 7.5;
+                        break;
+                    case 2:
+                        vat_rate_val = 7.5;
+                        break;
+                    case 3:
+                        vat_rate_val = 3.0;
+                        break;
+                    case 4:
+                        vat_rate_val = 7.5;
+                        break;
+                    case 5:
+                        vat_rate_val = 4.0;
+                        break;
+                    case 6:
+                        vat_rate_val = 4.0;
+                        break;
+                    case 7:
+                        vat_rate_val = 2.25;
+                        break;
+                    case 8:
+                        vat_rate_val = 4.0;
+                        break;
+                    case 9:
+                        vat_rate_val = 7.5;
+                        break;
+                    case 10:
+                        vat_rate_val = 1.5;
+                        break;
+                    case 11:
+                        vat_rate_val = 2.5;
+                        break;
+                    case 12:
+                        vat_rate_val = 4.5;
+                        break;
+                }
             }
-        }
 
-        result_price = (price*vat_rate_val) / 100.0;
-        result_price += price;
+            vat = (price * vat_rate_val) / 100.0;
+            result_price = price + vat;
 
-        if(vat_inclusive){
-            vat_rate_val = price*(vat_rate_val/result_price);
-            result_price = price - vat_rate_val;
+            if (vat_inclusive) {
+                vat = price * (vat_rate_val / 115.0);
+                result_price = price - vat;
+            }
+            //DecimalFormat df = new DecimalFormat(".##");
+            String final_result = Double.toString(result_price);
+            String final_vat = Double.toString(vat);
+            Toast.makeText(getApplicationContext(), "Vat amount: " + final_vat + "\nPrice: " + final_result, Toast.LENGTH_LONG).show();
+        } catch(Exception e){
+
         }
-        DecimalFormat df = new DecimalFormat(".##");
-        String final_result = df.format(result_price);
-        String final_vat = df.format(vat_rate_val);
-        Toast.makeText(getApplicationContext(), "Vat: " + final_vat + "\nPrice: " + final_result, Toast.LENGTH_LONG).show();
     }
 }
