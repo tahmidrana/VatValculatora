@@ -1,7 +1,7 @@
 package com.example.tahmi.androidsmartui;
 
 import android.content.DialogInterface;
-import android.icu.text.DecimalFormat;
+
 import android.os.Build;
 import android.support.annotation.RequiresApi;
 import android.support.v7.app.AlertDialog;
@@ -16,6 +16,7 @@ import android.widget.RadioButton;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+import java.text.DecimalFormat;
 
 import static android.app.PendingIntent.getActivity;
 
@@ -181,17 +182,31 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
 
-            vat = (price * vat_rate_val) / 100.0;
+            vat = (price * vat_rate_val) / 100;
             result_price = price + vat;
 
             if (vat_inclusive) {
-                vat = price * (vat_rate_val / 115.0);
+                vat = price * (vat_rate_val / 115);
                 result_price = price - vat;
             }
-            //DecimalFormat df = new DecimalFormat(".##");
-            String final_result = Double.toString(result_price);
-            String final_vat = Double.toString(vat);
-            Toast.makeText(getApplicationContext(), "Vat amount: " + final_vat + "\nPrice: " + final_result, Toast.LENGTH_LONG).show();
+            DecimalFormat formatter = new DecimalFormat("#.##");
+            //String final_result = Double.toString(result_price);
+            //String final_vat = Double.toString(vat);
+            Double final_result = Double.valueOf(formatter.format(result_price));
+            Double final_vat = Double.valueOf(formatter.format(vat));
+            //Toast.makeText(getApplicationContext(), "Vat amount: " + final_vat + "\nPrice: " + final_result, Toast.LENGTH_LONG).show();
+
+            AlertDialog.Builder messager = new AlertDialog.Builder(MainActivity.this);
+            messager.setTitle("Result");
+            messager.setMessage("Vat amount: " + final_vat + "\nValue: " + final_result);
+            messager.setNegativeButton("Close", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+                    dialogInterface.cancel();
+                }
+            });
+            messager.show();
+
         } catch(Exception e){
 
         }
