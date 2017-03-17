@@ -61,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
         adapter = ArrayAdapter.createFromResource(this, R.array.vat_rate, android.R.layout.simple_spinner_dropdown_item);
         vat_rate.setAdapter(adapter);
 
-        adapter = ArrayAdapter.createFromResource(this, R.array.services_list, android.R.layout.simple_spinner_dropdown_item);
+        adapter = ArrayAdapter.createFromResource(this, R.array.services_list, R.layout.textview);
         services_list.setAdapter(adapter);
 
 

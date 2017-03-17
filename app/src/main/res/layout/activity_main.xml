@@ -14,7 +14,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="TAX CALCULATOR"
+        android:text="VAT CALCULATOR"
         android:textAppearance="@style/TextAppearance.AppCompat.Body2"
         android:fontFamily="sans-serif-medium"
         android:typeface="normal"
@@ -49,7 +49,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:padding="20dp">
+                android:padding="10dp">
 
                 <TextView
                     android:text="Financial Year:"
